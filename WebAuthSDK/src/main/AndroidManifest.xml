@@ -6,7 +6,7 @@
         android:supportsRtl="true">
 
         <!-- Declare WebViewActivity here -->
-        <activity android:name=".WebViewActivity" />
+        <activity android:name=".AuthenticationActivity" />
 
     </application>
 

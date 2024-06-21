@@ -1,7 +1,6 @@
 package com.skillmine.webauthsdk
 
 import android.annotation.SuppressLint
-import android.content.Context
 import android.content.Intent
 import android.graphics.Bitmap
 import android.net.Uri
@@ -19,16 +18,15 @@ import android.widget.ProgressBar
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 
-class WebViewActivity : AppCompatActivity() {
+class AuthenticationActivity : AppCompatActivity() {
     private lateinit var accessToken: String
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        setContentView(R.layout.activity_web_view)
+        setContentView(R.layout.activity_auth_view)
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
@@ -102,7 +100,7 @@ class WebViewActivity : AppCompatActivity() {
 
                     accessToken.let {
                         Toast.makeText(
-                            this@WebViewActivity,
+                            this@AuthenticationActivity,
                             "Access Token Received",
                             Toast.LENGTH_SHORT
                         ).show()
