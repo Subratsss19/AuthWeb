@@ -164,16 +164,4 @@ class WebViewActivity : AppCompatActivity() {
         webSettings.cacheMode = WebSettings.LOAD_DEFAULT // Use default cache settings
 
     }
-
-    fun openWebAuthSDK() {
-
-    }
-
-    private fun saveAccessToken(accessToken: String) {
-
-    }
-
-    fun getAccessToken(accessToken: String): String {
-      return accessToken
-    }
 }
