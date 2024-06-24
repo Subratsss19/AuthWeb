@@ -9,11 +9,13 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.skillmine.skillmineauthweb.AuthenticationConstants.BASE_URL
+import com.skillmine.skillmineauthweb.AuthenticationConstants.CLIENT_ID
 import com.skillmine.webauthsdk.AuthenticationActivity
 
 class MainActivity : AppCompatActivity() {
     private lateinit var loginButton: Button
-    //Get the result from WebViewActivity
+    //Get the result from AuthenticationActivity
     private val authActivityResultLauncher =
         registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
             if (result.resultCode == RESULT_OK) {
@@ -40,6 +42,8 @@ class MainActivity : AppCompatActivity() {
         //Call  Library Call
         loginButton.setOnClickListener {
             val intent = Intent(this@MainActivity, AuthenticationActivity::class.java)
+            intent.putExtra("baseUrl",BASE_URL)
+            intent.putExtra("clientId",CLIENT_ID)
             authActivityResultLauncher.launch(intent)
         }
 

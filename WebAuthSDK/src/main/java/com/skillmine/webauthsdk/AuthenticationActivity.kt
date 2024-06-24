@@ -23,6 +23,8 @@ import androidx.core.view.WindowInsetsCompat
 
 class AuthenticationActivity : AppCompatActivity() {
     private lateinit var accessToken: String
+    private lateinit var baseUrl: String
+    private lateinit var clientId: String
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -36,6 +38,8 @@ class AuthenticationActivity : AppCompatActivity() {
         val webView: WebView = findViewById(R.id.webview_layout)
         val progressBar = findViewById<ProgressBar>(R.id.progress_bar)
 
+        baseUrl = intent.getStringExtra("baseUrl").toString()
+        clientId = intent.getStringExtra("clientId").toString()
 
         webView.clearCache(true)
         webView.clearHistory()
@@ -48,8 +52,8 @@ class AuthenticationActivity : AppCompatActivity() {
 
         // Encode URL properly
         // Define your base URL, client ID, redirect URI, etc.
-        val baseUrl = "https://nightly-accounts-api.complyment.com/authz-srv/authz"
-        val clientId = "236b91c8-b2f0-4891-a83c-f358a109a843"
+     //   val baseUrl = "https://nightly-accounts-api.complyment.com/authz-srv/authz"
+       // val clientId = "236b91c8-b2f0-4891-a83c-f358a109a843"
         val redirectUri = "http://localhost:3000"
 
         // Build the query string
@@ -65,6 +69,7 @@ class AuthenticationActivity : AppCompatActivity() {
         // Combine base URL, paths, and query string
         val completeUrl = "$baseUrl?$queryParams"
         Log.d("WebView", "Initial URL: $completeUrl")
+        // Load the initial URL
         webView.loadUrl(completeUrl)
 
         // Load the initial URL
